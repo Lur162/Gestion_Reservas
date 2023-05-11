@@ -1,0 +1,32 @@
+.headerContainer{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: #545353;
+    width: 100%;
+    padding: 10px;
+    height: 90px;
+    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.headerContainer img{
+    width: 70px;
+    margin-right: 20px;
+}
+
+.menuContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.menuContainer a :hover{
+    cursor: pointer;
+}
+.menuContainer a{
+    text-decoration: none;
+    color: aliceblue;
+}

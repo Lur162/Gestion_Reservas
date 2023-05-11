@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { AppComponent } from './app.component';
+import { PageRouterModule } from './pages/pages.routing';
+import { Page404Component } from './page404/page404.component';
+import { AuthRouterModule } from './auth/auth.routing';
 
 const routes: Routes = [
-  {path:"", component:AppComponent, pathMatch:"full"},
-  {path:"login", component:LoginComponent, pathMatch:"full"},
-  {path:"registro", component:RegisterComponent, pathMatch:"full"}
+  {path:"",  pathMatch:"full",redirectTo:'/main'},
+  {path:"**", component:Page404Component  },
+  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),PageRouterModule,AuthRouterModule],
   exports: [RouterModule]
 })
 
