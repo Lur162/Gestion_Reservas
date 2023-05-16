@@ -6,21 +6,25 @@ import { PageRouterModule } from './pages.routing';
 import { InicioComponent } from './inicio/inicio.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { BrowserModule } from '@angular/platform-browser';
+import { ComentariosComponent } from './comentarios/comentarios.component';
 //PRIME-NG
 import { CalendarModule } from 'primeng/calendar';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ReservasComponent,
     InicioComponent,
-    ContactoComponent
+    ContactoComponent,
+    ComentariosComponent
 
   ],
   imports: [
@@ -29,9 +33,17 @@ import { BrowserModule } from '@angular/platform-browser';
     PageRouterModule,
     SharedModule,
     FormsModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
-    CalendarModule
+    BrowserAnimationsModule,
+    CalendarModule,
+    InputTextModule,
+    RippleModule,
+    InputTextareaModule,
+    ButtonModule,
+    ToastModule
+  ], 
+  exports:[
+    PageRouterModule
   ]
 })
 export class PagesModule { }
