@@ -20,6 +20,7 @@ export class ContactoComponent {
     private cf: FormBuilder,
     private contactService: ContactoService,
     private messageService: MessageService
+    
   ) {
     this.contactoFormulario = this.cf.group({});
   }
@@ -52,13 +53,17 @@ export class ContactoComponent {
       (response) => {
         console.log('Correo enviado correctamente');
         // Despúes del correo se vacian los campos
-        //this.contactForm = { nombre: '', correo: '',   asunto: '', mensaje: '' };
+        //this.cf = { nombre: '', correo: '',   asunto: '', mensaje: '' };
+        // Después del correo se vacian los campos
+          this.contactoFormulario.reset();
+
       },
       (error) => {
         console.error('Error al enviar el correo:', error);
         // Despues del error de vacian los campos
-        //this.contactForm = { nombre: '', correo: '',   asunto: '', mensaje: '' };
+       // this.contactoFormulario = { nombre: '', correo: '',   asunto: '', mensaje: '' };
       }
     );
+          
   }
 }

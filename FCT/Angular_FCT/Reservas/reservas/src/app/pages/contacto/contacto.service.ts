@@ -12,6 +12,6 @@ import { ContactForm } from "./contacto-form";
     constructor(private http: HttpClient) { }
   
     enviarEmail(contactoForm: ContactForm): Observable<any> {
-      return this.http.get<any>(this.restUrl);
+      return this.http.post<any>(this.restUrl,contactoForm);
     }
   }
