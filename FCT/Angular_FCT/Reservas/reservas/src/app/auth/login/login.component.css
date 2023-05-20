@@ -1,0 +1,26 @@
+.background {
+    background-image: url("/assets/imagenes/paisajerural.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+  }
+  .cardContainer {
+    -webkit-box-shadow: -4px 7px 5px 1px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: -4px 7px 5px 1px rgba(0, 0, 0, 0.41);
+    box-shadow: -4px 7px 5px 1px rgba(0, 0, 0, 0.41);
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 30%;
+    background-color: rgba(209, 208, 207, 0.849);
+  }
+  
+  .card .p-inputtext {
+    background-color: rgba(228, 228, 228, 0.747);
+  }
+  .p-button {
+    background-color: rgb(107, 194, 206);
+    border: 1px solid #6cbed3;
+  }
+  

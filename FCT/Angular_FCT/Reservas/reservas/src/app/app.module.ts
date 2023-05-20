@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { Page404Component } from './page404/page404.component';
 import { PagesModule } from './pages/pages.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
+    AuthModule,
     HttpClientModule
   
   ],

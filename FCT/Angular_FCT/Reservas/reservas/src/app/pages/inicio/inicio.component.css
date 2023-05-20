@@ -1,7 +1,6 @@
 .container {
   display: flex;
   width: 100%;
-  height: 90vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -9,7 +8,7 @@
 
 .containerImage {
   display: flex;
-  width: 50%;
+  width: 60%;
   height: fit-content;
   flex-direction: row;
   flex-wrap: wrap;
@@ -19,7 +18,8 @@
 }
 
 .containerImage div{
-    width: 30%;
+    width: 220px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,8 +28,8 @@
 background-color: rgba(150, 149, 147, 0.616);
 }
 .containerImage div img{
-    width: 220px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     padding: 20px;
     border-radius: 20px;
     -moz-border-radius: 20px;

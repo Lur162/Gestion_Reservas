@@ -1,1 +1,55 @@
-<p>login works!</p>
+
+<p-toast></p-toast>
+
+<div class="background flex justify-content-center align-items-center w-full ">
+  
+  <div class="card grid cardContainer">
+    <h2 class="col-12 flex justify-content-center alig-items-center">
+      Contacto
+    </h2>
+    <form class="col-12 grid" [formGroup]="fomrLogin" style="margin: auto;">
+      <div
+        class="field col-12  flex justify-content-center alig-items-center"
+      >
+        <span class="p-float-label mt-3 w-full">
+          <input
+            class="w-full"
+            pInputText
+            formControlName="correo"
+            id="correo"
+            [ngClass]="{ 'ng-invalid ng-dirty': isValidField('correo') }"
+          />
+          <label htmlFor="correo">Email:</label>
+        </span>
+      </div>
+      <div
+        class="field col-12  flex justify-content-center alig-items-center"
+      >
+        <span class="p-float-label mt-3 w-full">
+          <input
+            class="w-full"
+            pInputText
+            type="password"
+            id="contrasenia"
+            formControlName="contrasenia"
+            [ngClass]="{ 'ng-invalid ng-dirty': isValidField('contrasenia') }"
+          />
+          <label htmlFor="contrasenia">Contraseña:</label>
+        </span>
+      </div>
+   
+      <div class="field col-12">
+        <button
+          pButton
+          pRipple
+          label="Enviar"
+          class="w-full"
+          (click)="login()"
+        ></button>
+      </div>
+      <div class=" col-12 flex justify-content-center align-items-center">
+        <p>No estas registrado? </p><p>-</p><a routerLink="/register"> Registrarse</a>
+      </div>
+    </form>
+  </div>
+</div>

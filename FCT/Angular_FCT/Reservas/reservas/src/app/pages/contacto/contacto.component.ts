@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ContactoService } from './contacto.service';
-import { ContactForm } from './contacto-form';
+import { ContactoService } from '../../services/contacto.service';
+import { ContactForm } from '../../core/interfaces/contacto-form';
 import { MessageService } from 'primeng/api';
 
 @Component({

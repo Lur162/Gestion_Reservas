@@ -1,3 +1,11 @@
+.background {
+  background-image: url("/assets/imagenes/paisajerural.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+}
 .container {
     display: flex;
     width: 100%;

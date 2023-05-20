@@ -5,21 +5,21 @@ import { ReservasComponent } from './reservas/reservas.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
-
-
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-    { path: '', component: InicioComponent },
-    { path: 'reserva', component: ReservasComponent },
-    { path: 'contacto', component: ContactoComponent },
-    {path: 'comentarios', component: ComentariosComponent},
-  
-
-   
+  { path: '', canActivate: [AuthGuard], component: InicioComponent },
+  { path: 'reserva', canActivate: [AuthGuard], component: ReservasComponent },
+  { path: 'contacto', canActivate: [AuthGuard], component: ContactoComponent },
+  {
+    path: 'comentarios',
+    canActivate: [AuthGuard],
+    component: ComentariosComponent,
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class PageChildRouterModule {}

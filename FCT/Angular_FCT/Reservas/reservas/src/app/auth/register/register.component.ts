@@ -6,14 +6,15 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ContactoService } from 'src/app/services/contacto.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
   providers: [MessageService]
 })
-export class LoginComponent {
+export class RegisterComponent {
+  //dirty
   private _isDirty: boolean = false;
-  fomrLogin: FormGroup;
+  formRegister: FormGroup;
  
 
   constructor(
@@ -23,41 +24,44 @@ export class LoginComponent {
     private messageService: MessageService
     
   ) {
-    this.fomrLogin = this.cf.group({});
+    this.formRegister = this.cf.group({});
   }
 
   ngOnInit(): void {
+    //vaciar
     sessionStorage.clear()
-    this.fomrLogin = this.cf.group({
-      correo: ['', Validators.required],
+    this.formRegister = this.cf.group({
+      nombre: ['', Validators.required],
+      apellido: ['', [Validators.required]],
+      correo: ['', [Validators.required]],
       contrasenia: ['', [Validators.required]],
     });
   }
 
    isValidField(id: string) {
-    let field = this.fomrLogin.get(id);
+    let field = this.formRegister.get(id);
+   //if else
     return (field?.dirty && !field?.valid && this._isDirty) || (!field?.valid && this._isDirty)
   }
 
-  login(){
-    if (!this.fomrLogin.valid) {
+  onSubmit(){
+    if (!this.formRegister.valid) {
       this._isDirty = true;
-      this.messageService.add({  severity: 'error', summary: 'Error', detail: 'Debes de completar el formulario para enviar' });
+      this.messageService.add({  severity: 'error', summary: 'Error', detail: 'Error al registrar usuario' });
       return;
     }
-    this.authService.login(this.fomrLogin.value).subscribe(
+    this.authService.register(this.formRegister.value).subscribe(
       (response) => {
         console.log(response)
         sessionStorage.setItem('token','65a4sdgf864adfg168a')
         this.router.navigateByUrl('/')
-
-      },
+       },
       (error) => {
-        this.messageService.add({  severity: 'error', summary: 'Error', detail: 'Email o contraseña invalidos' });
-        
+      
+       this.messageService.add({  severity: 'error', summary: 'Error', detail: 'Error al registrar usuario' });
+       sessionStorage.setItem('token','65a4sdgf864adfg168a')
+       this.router.navigateByUrl('/')
       }
     );
   }
-
-
 }

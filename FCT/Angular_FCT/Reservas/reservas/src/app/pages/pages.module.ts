@@ -17,6 +17,8 @@ import { RippleModule } from 'primeng/ripple';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ToastModule } from 'primeng/toast';
     RippleModule,
     InputTextareaModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    CardModule,
+    DropdownModule
   ], 
   exports:[
     PageRouterModule

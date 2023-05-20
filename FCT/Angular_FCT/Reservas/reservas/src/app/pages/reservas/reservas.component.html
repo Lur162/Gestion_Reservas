@@ -1,7 +1,17 @@
+<div class="background flex justify-content-center align-items-center w-full ">
 <div class="container">
     <img src="/assets/imagenes/logo.jpg" alt="" style="width: 200px" />
     <div class="containerSearchBar">
+        <p-calendar [(ngModel)]="reserva.date" selectionMode="range" [readonlyInput]="true"></p-calendar>
+        <p-dropdown [(ngModel)]="reserva.numero_personas"  [options]="options" optionLabel="value"></p-dropdown>
+        {{reserva.total}}
     </div>
+    <button
+    pButton
+    pRipple
+    label="Enviar"
+    class="w-full"
+    (click)="reservar()"
+  ></button>
 </div>
-
-<p-calendar  [readonlyInput]="true"></p-calendar>
+</div>

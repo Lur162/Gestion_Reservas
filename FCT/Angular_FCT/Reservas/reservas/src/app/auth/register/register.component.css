@@ -1,5 +1,5 @@
 .background {
-  background-image: url("/assets/imagenes/paisaje2.jpg");
+  background-image: url("/assets/imagenes/paisajerural.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -12,8 +12,8 @@
   box-shadow: -4px 7px 5px 1px rgba(0, 0, 0, 0.41);
   border-radius: 5px;
   margin-top: 20px;
-  width: 40%;
-  background-color: rgba(247, 245, 243, 0.76);
+  width: 30%;
+  background-color: rgba(209, 208, 207, 0.849);
 }
 
 .card .p-inputtext {
@@ -23,3 +23,18 @@
   background-color: rgb(107, 194, 206);
   border: 1px solid #6cbed3;
 }
+/*
+.headerContainer{
+  display: flex;
+  justify-content: center;
+  height: 5%;
+
+}
+
+<div class="headerContainer">
+  <div>
+    <img class="imgLogo" src="/assets/imagenes/logo.jpg" alt="reservas" />
+  </div>
+ 
+</div>
+*/

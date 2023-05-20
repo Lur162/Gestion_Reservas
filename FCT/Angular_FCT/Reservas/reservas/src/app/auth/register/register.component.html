@@ -1,11 +1,10 @@
-
 <p-toast></p-toast>
 <div class="background flex justify-content-center align-items-center w-full ">
   <div class="card grid cardContainer">
     <h2 class="col-12 flex justify-content-center alig-items-center">
-      Contacto
+      Registro
     </h2>
-    <form class="col-12 grid" [formGroup]="contactoFormulario" style="margin: auto;">
+    <form class="col-12 grid" [formGroup]="formRegister" style="margin: auto;">
       <div
         class="field col-12 md:col-6 flex justify-content-center alig-items-center"
       >
@@ -36,31 +35,31 @@
       </div>
       <div class="field col-12">
         <span class="p-float-label">
-          <textarea
+          <input
             class="w-full"
-            id="asunto"
-            rows="5"
-            formControlName="asunto"
-            [ngClass]="{ 'ng-invalid ng-dirty': isValidField('asunto') }"
-            pInputTextarea
-          ></textarea>
-          <label for="asunto">Asunto:</label>
+            pInputText
+            id="apellido"
+            formControlName="apellido"
+            [ngClass]="{ 'ng-invalid ng-dirty': isValidField('apellido') }"
+          />
+          <label for="apellido">Apellido:</label>
         </span>
       </div>
 
       <div class="field col-12">
         <span class="p-float-label">
-          <textarea
+          <input
             class="w-full"
-            id="mensaje"
-            rows="5"
-            formControlName="mensaje"
-            [ngClass]="{ 'ng-invalid ng-dirty': isValidField('mensaje') }"
-            pInputTextarea
-          ></textarea>
-          <label for="mensaje">Mensaje:</label>
+            pInputText
+            type="password"
+            id="contrasenia"
+            formControlName="contrasenia"
+            [ngClass]="{ 'ng-invalid ng-dirty': isValidField('contrasenia') }"
+          />
+          <label for="apellido">Contrasenia:</label>
         </span>
       </div>
+
       <div class="field col-12">
         <button
           pButton
@@ -68,6 +67,15 @@
           label="Enviar"
           class="w-full"
           (click)="onSubmit()"
+        ></button>
+      </div>
+      <div class="field col-12">
+        <button
+          pButton
+          pRipple
+          label="Volver al Login"
+          class="w-full"
+          routerLink="/login"
         ></button>
       </div>
     </form>
