@@ -51,7 +51,7 @@ export class Reserva {
   }
 
   /**
-   * Getter precio Total
+   * Getter total
    * @return {Number}
    */
   public get total(): Number {

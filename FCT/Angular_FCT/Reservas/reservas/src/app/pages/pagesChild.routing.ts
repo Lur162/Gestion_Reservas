@@ -6,15 +6,14 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { LoginComponent } from '../auth/login/login.component';
 
 const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: InicioComponent },
   { path: 'reserva', canActivate: [AuthGuard], component: ReservasComponent },
   { path: 'contacto', canActivate: [AuthGuard], component: ContactoComponent },
-  {
-    path: 'comentarios',
-    canActivate: [AuthGuard],
-    component: ComentariosComponent,
+  { path:'login',  canActivate: [AuthGuard], component: LoginComponent },
+  {  path: 'comentarios',canActivate: [AuthGuard],component: ComentariosComponent,
   },
 ];
 

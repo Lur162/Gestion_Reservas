@@ -53,14 +53,13 @@ export class RegisterComponent {
     this.authService.register(this.formRegister.value).subscribe(
       (response) => {
         console.log(response)
-        sessionStorage.setItem('token','65a4sdgf864adfg168a')
-        this.router.navigateByUrl('/')
+        //sessionStorage.setItem('token','65a4sdgf864adfg168a')
+        this.router.navigateByUrl('/login')
        },
       (error) => {
       
        this.messageService.add({  severity: 'error', summary: 'Error', detail: 'Error al registrar usuario' });
-       sessionStorage.setItem('token','65a4sdgf864adfg168a')
-       this.router.navigateByUrl('/')
+     
       }
     );
   }

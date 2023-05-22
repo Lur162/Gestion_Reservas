@@ -16,11 +16,7 @@ export class AuthService {
 
   login(loginForm: Login): Observable<any> {
     return this.http
-      .post<any>(`${base_url}/login`, {
-        nombre: '',
-        apellido: '',
-        ...loginForm,
-      })
+      .post<any>(`${base_url}/login`,loginForm)
       .pipe(
         tap((response) => {
           this._user = response;
@@ -29,7 +25,8 @@ export class AuthService {
   }
 
   register(createForm: Usuario): Observable<any> {
-    return this.http.post<any>(`${base_url}/create`, createForm).pipe(
+    return this.http.post<any>(`${base_url}/create`, createForm)
+    .pipe(
       tap((response) => {
         this._user = response;
       })

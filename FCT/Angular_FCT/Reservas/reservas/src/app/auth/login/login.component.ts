@@ -48,9 +48,10 @@ export class LoginComponent {
     this.authService.login(this.fomrLogin.value).subscribe(
       (response) => {
         console.log(response)
-        sessionStorage.setItem('token','65a4sdgf864adfg168a')
+        //sessionStorage.setItem('token','65a4sdgf864adfg168a')
+        
         this.router.navigateByUrl('/')
-
+        console.log('Inicio de sesion')
       },
       (error) => {
         this.messageService.add({  severity: 'error', summary: 'Error', detail: 'Email o contraseña invalidos' });
