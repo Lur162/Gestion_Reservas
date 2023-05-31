@@ -9,7 +9,7 @@ import { MessageService } from 'primeng/api';
   selector: 'app-reservas',
   templateUrl: './reservas.component.html',
   styleUrls: ['./reservas.component.css'],
-  providers: [MessageService],
+  providers: [MessageService]
 })
 export class ReservasComponent {
   private _reserva: Reserva;
@@ -17,8 +17,9 @@ export class ReservasComponent {
   options:{key:number,value:string}[]=[]
 
   constructor(private AuthService:AuthService, private reservaService:ReservaService,private messageService:MessageService){
+    console.log(this.AuthService.user.id)
    //this.AuthService.user.id_usuario
-    this._reserva= new Reserva(1);
+    this._reserva= new Reserva(this.AuthService.user.id);
     this.minDate=new Date();
     this.options=[
       {key:1,value:'1 Persona'},
@@ -40,7 +41,7 @@ export class ReservasComponent {
     const currentDate = new Date();
 
     if (selectedDate < currentDate) {
-      // La fecha seleccionada es anterior a la fecha actual, puedes mostrar un mensaje de error o realizar alguna acción adicional.
+        //NO ES POSIBLE MARCAR UNA FECHA ANTERIOR A LA DE HOY
       this.reserva.fecha_Entrada = new Date(); // Restablecer el valor seleccionado
       this.reserva.fecha_Salida=new Date();
     }

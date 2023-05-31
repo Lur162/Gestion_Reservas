@@ -1,14 +1,25 @@
-<p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '360px' }">
-    <ng-template pTemplate="header">
-        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
-    </ng-template>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-        quas!
-    </p>
-    <ng-template pTemplate="footer">
-        <p-button label="Save" icon="pi pi-check"></p-button>
-        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button>
-    </ng-template>
-</p-card>
-
+<div class="container">
+    <div class="card">
+      <h3>Valoración de la Casa</h3>
+      <form (submit)="guardarComentarios()">
+        <div class="form-group">
+          <label for="fecha">Fecha de Publicación:</label>
+          <input type="date" id="fecha" name="fecha" [(ngModel)]="comentario.fecha_publicacion" required>
+        </div>
+        <div class="form-group">
+          <label for="valoracion">Valoración:</label>
+          <textarea id="valoracion" name="valoracion" [(ngModel)]="comentario.texto" required></textarea>
+        </div>
+        <button type="submit">Guardar Comentario</button>
+      </form>
+    </div>
+  
+    <div class="comment-list">
+      <h3>Lista de Comentarios</h3>
+      <div class="card" *ngFor="let comentario of comentarios">
+        <p>Fecha de Publicación: {{ comentario.fecha_publicacion | date }}</p>
+        <p>Comentario: {{ comentario.texto }}</p>
+      </div>
+    </div>
+  </div>
+  

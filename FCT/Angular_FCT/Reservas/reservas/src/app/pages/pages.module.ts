@@ -19,6 +19,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule,
     ToastModule,
     CardModule,
-    DropdownModule
+    DropdownModule,
+    InputNumberModule
   ], 
   exports:[
     PageRouterModule

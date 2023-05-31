@@ -5,7 +5,7 @@
         
           <p-calendar [(ngModel)]="reserva.date" selectionMode="range" [readonlyInput]="true" (onSelect)="onDateSelect($event)" [minDate]="minDate"></p-calendar>
           <p-dropdown [(ngModel)]="reserva.numero_personas"  [options]="options" optionLabel="value"></p-dropdown>
-          <p-card > {{reserva.total}}</p-card>
+          <p-inputNumber [ngModel]="reserva.total"  mode="currency" currency="EUR" > </p-inputNumber>
           
       </div>
       <button
