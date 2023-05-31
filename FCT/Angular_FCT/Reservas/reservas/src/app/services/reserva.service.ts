@@ -16,4 +16,7 @@ export class ReservaService {
   generarReserva(reserva: Reserva): Observable<any> {
     return this.http.post<any>(`${base_url}/reservas`, reserva)
   }
+  borrarReserva(reserva:Reserva):Observable<any>{
+    return this.http.delete<any>(`${base_url}/deleteById`)
+  }
 }

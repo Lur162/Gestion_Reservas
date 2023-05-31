@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Comentarios } from 'src/app/core/models/comentarios';
 import { AuthService } from 'src/app/services/auth.service';
 import {ComentarioService} from 'src/app/services/comentario.service';
 import { MessageService } from 'primeng/api';
-import { FormsModule } from '@angular/forms';
+import { Renderer2 } from '@angular/core';
+
 @Component({
   selector: 'app-comentarios',
   templateUrl: './comentarios.component.html',
@@ -15,8 +16,8 @@ export class ComentariosComponent {
  
   private _comentarioo: Comentarios = new Comentarios(1);
   comentarios: Comentarios[] = [];
-
-  constructor(private AuthService: AuthService, private comentarioService: ComentarioService,private messageService:MessageService  ){
+  @ViewChild('commentList') commentList!: ElementRef;
+  constructor(private AuthService: AuthService, private comentarioService: ComentarioService,private messageService:MessageService,private renderer: Renderer2  ){
     this._comentarioo=new Comentarios(this.AuthService.user.id);
 
   }
@@ -40,13 +41,16 @@ export class ComentariosComponent {
 
       (response) => {
         console.log(response);
+         // Guardar el comentario en la lista
+        this.comentarios.push(this.comentario);
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Comentario guardado con éxito' });
-          // Guardar el comentario en la lista
-          this.comentarios.push(this.comentario);
-    
-          // Limpiar el formulario
-         
+        const commentListElement = this.renderer.selectRootElement('#commentList');
+        commentListElement.scrollTop = commentListElement.scrollHeight;
+  
 
+         this._comentarioo.fecha_publicacion=new Date()
+         this._comentarioo.texto=new String();
+          
       },
       (error) => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No ha sido posible guardar el comentario' });

@@ -1,19 +1,28 @@
+.background{
+  background-image: url("/assets/imagenes/paisaje.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+}
 .container {
+  
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f9f9f9;
+    background-color: #f9f9f900;
+    color: #1b1919;
   }
   
   .card {
-    background-color: #ffffff;
+    background-color: #ffffffde;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 400px;
     padding: 24px;
     margin-bottom: 24px;
+  
   }
   
   h3 {
@@ -23,10 +32,11 @@
   
   .form-group {
     margin-bottom: 24px;
+ 
   }
   
   label {
-    font-weight: bold;
+    font-weight: #464343;
     display: block;
     margin-bottom: 8px;
   }
@@ -41,7 +51,7 @@
   }
   
   button {
-    background-color: #4caf50;
+    background-color: #66a2da;
     color: white;
     padding: 12px 24px;
     border: none;
