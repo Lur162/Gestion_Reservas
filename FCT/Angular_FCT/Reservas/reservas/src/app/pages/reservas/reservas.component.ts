@@ -59,12 +59,13 @@ this.reservaService.generarReserva(this._reserva).subscribe(
 )
   }
   //HAY QUE LLAMAR AL BOTON DE ELIMINAR, BORRAR RESERVA
-  borrarReserva(){
-    this.reservaService.borrarReserva(this._reserva).subscribe(
+ 
+  borrarReserva(id:number){
+    this.reservaService.borrarReserva(id).subscribe(
       (response) => {
         console.log(response);
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Reserva borrada correctamente' });
-        console.log('Inicio de sesión');
+        console.log('Reserva eliminada');
       },
       (error) => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'La id de la Reserva es incorrecta' });
