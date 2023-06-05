@@ -62,7 +62,7 @@ export class ComentariosComponent {
 
     
     /**
-     * Getter reserva
+     * Getter comentario
      * @return {Comentarios}
      */
 	public get comentario(): Comentarios {

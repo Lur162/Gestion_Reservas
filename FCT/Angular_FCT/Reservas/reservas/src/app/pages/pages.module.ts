@@ -20,6 +20,7 @@ import { ToastModule } from 'primeng/toast';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
 
 @NgModule({
@@ -47,7 +48,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
     ToastModule,
     CardModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    VirtualScrollerModule,
+ 
   ], 
   exports:[
     PageRouterModule

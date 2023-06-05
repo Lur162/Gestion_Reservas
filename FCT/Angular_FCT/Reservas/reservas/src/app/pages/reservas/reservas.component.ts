@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Reserva } from 'src/app/core/models/reserva';
 import { AuthService } from 'src/app/services/auth.service';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { MessageService } from 'primeng/api';
-
+import { UsuarioLoged } from 'src/app/core/interfaces/auth';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-reservas',
@@ -12,13 +13,16 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class ReservasComponent {
+  @ViewChild('idReservaInput') idReservaInput!: ElementRef;
   private _reserva: Reserva;
   minDate:Date;
   options:{key:number,value:string}[]=[]
-
+  texto: string = 'Código de tu reserva';
   constructor(private AuthService:AuthService, private reservaService:ReservaService,private messageService:MessageService){
     console.log(this.AuthService.user.id)
-   //this.AuthService.user.id_usuario
+    
+    
+   //this.AuthService.user
     this._reserva= new Reserva(this.AuthService.user.id);
     this.minDate=new Date();
     this.options=[
@@ -35,6 +39,12 @@ export class ReservasComponent {
       {key:11,value:'11 Personas'},
       {key:12,value:'12 Personas'}
     ]
+  }
+
+  clearPlaceholder() {
+    if (this.texto === 'Código de tu reserva') {
+      this.texto = '';
+    }
   }
   onDateSelect(event: any) {
     const selectedDate = new Date(event.value);
@@ -61,13 +71,25 @@ this.reservaService.generarReserva(this._reserva).subscribe(
   //HAY QUE LLAMAR AL BOTON DE ELIMINAR, BORRAR RESERVA
  
   borrarReserva(id:number){
-    this.reservaService.borrarReserva(id).subscribe(
+    //TENGO QUE PASAR EL JWT PORQUE SI NO PUEDE BORRAR TODAS LAS RESERVAS INDENDIENTEMENTE SI ES SUYA O NO
+    const idUsuario = this.AuthService.user.id;
+    this.reservaService.borrarReserva(id,idUsuario ).subscribe(
       (response) => {
-        console.log(response);
-        this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Reserva borrada correctamente' });
-        console.log('Reserva eliminada');
+        if (response && response.success) {
+          console.log(response);
+          console.log('Reserva eliminada');
+          
+          this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Reserva borrada correctamente' });
+          this.idReservaInput.nativeElement.value = null;
+        } else {
+          console.log(response);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo eliminar la reserva' });
+          this.idReservaInput.nativeElement.value = null;
+        }
+        
       },
       (error) => {
+        console.log(error);
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'La id de la Reserva es incorrecta' });
       }
     )
