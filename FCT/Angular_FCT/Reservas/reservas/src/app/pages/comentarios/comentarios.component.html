@@ -1,29 +1,28 @@
 <p-toast></p-toast>
-<div class="background"  >
-<div class="flex justify-content-center align-items-center w-full ">
-<div class="container">
-    <div class="card">
-      <h2>Valoración de la Casa</h2>
-      <form (submit)="guardarComentarios()">
-        <div class="form-group">
-          <label for="fecha">Fecha de Publicación:</label>
-          <input type="date" id="fecha" name="fecha" [(ngModel)]="comentario.fecha_publicacion" required>
+
+<div class="background">
+  <div class="flex justify-content-center align-items-center w-full">
+    <div class="container">
+      <div class="card">
+        <h2>Valoración de la Casa</h2>
+        <form (submit)="guardarComentarios()">
+          <div class="form-group">
+
+            <p [(ngModel)]="comentario.fecha_publicacion">Fecha de Publicación: {{ getCurrentDate() | date }}</p>
+            <label for="valoracion">Valoración:</label>
+            <textarea id="valoracion" name="valoracion" [(ngModel)]="comentario.texto" required></textarea>
+          </div>
+          <button type="submit">Guardar Comentario</button>
+        </form>
+      </div>
+
+      <div class="comment-list" #commentList>
+        <h3>Reseñas</h3>
+        <div class="card" *ngFor="let comentario of comentarios">
+          <p>Fecha de Publicación: {{ comentario.fecha_publicacion | date }}</p>
+          <p>Comentario: {{ comentario.texto }}</p>
         </div>
-        <div class="form-group">
-          <label for="valoracion">Valoración:</label>
-          <textarea id="valoracion" name="valoracion" [(ngModel)]="comentario.texto" required></textarea>
-        </div>
-        <button type="submit">Guardar Comentario</button>
-      </form>
-    </div>
-  
-    <div class="comment-list" #commentList>
-      <h3>Reseñas</h3>
-      <div class="card" *ngFor="let comentario of comentarios">
-        <p>Fecha de Publicación: {{ comentario.fecha_publicacion | date }}</p>
-        <p>Comentario: {{ comentario.texto }}</p>
       </div>
     </div>
   </div>
-</div> 
 </div>

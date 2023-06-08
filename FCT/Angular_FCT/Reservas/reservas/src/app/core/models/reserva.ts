@@ -19,8 +19,8 @@ export class Reserva {
   toJSON() {
     return {
       usuario_id: this._usuario_id,
-      fecha_Entrada: this.fecha_Entrada,
-      fecha_Salida: this.fecha_Salida,
+      fecha_Entrada: this.fecha_Entrada.toISOString(),
+      fecha_Salida: this.fecha_Salida.toISOString(),
       numero_personas: this._numero_personas.key,
       importeTotal:this.total
     };

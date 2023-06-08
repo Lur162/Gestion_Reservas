@@ -4,6 +4,7 @@ package com.reservas.Reservas_BD.controller;
 import com.reservas.Reservas_BD.DTO.UsuarioDTO;
 import com.reservas.Reservas_BD.DTO.UsuarioLoginReturnDTO;
 import com.reservas.Reservas_BD.beans.Usuario;
+import com.reservas.Reservas_BD.security.JWTUtils;
 import com.reservas.Reservas_BD.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,8 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
-
+    @Autowired
+    JWTUtils jwtUtils;
 
     @PostMapping("api/user/create")
     public ResponseEntity<?> registrarUSer(@RequestBody Usuario user){
@@ -42,14 +44,22 @@ public class UsuarioController {
         String correo = loginRequest.getCorreo();
         String contrasenia = loginRequest.getContrasenia();
         Usuario userLoged= usuarioService.loginUser(correo, contrasenia);
-
         if (userLoged != null) {
-            UsuarioLoginReturnDTO userReturn = new UsuarioLoginReturnDTO(userLoged.getCorreo(), "TOKEN!!!",userLoged.getId_usuario());
+            // Generar el token JWT
+            String token = jwtUtils.generateJwtToken(userLoged.getCorreo());
 
-
-            return new ResponseEntity<>(userReturn, HttpStatus.OK);
+            // Validar el token JWT
+            if (jwtUtils.validateJwtToken(token, userLoged.getCorreo())) {
+                UsuarioLoginReturnDTO userReturn = new UsuarioLoginReturnDTO(userLoged.getCorreo(), token, userLoged.getId_usuario());
+                return new ResponseEntity<>(userReturn, HttpStatus.OK);
+            } else {
+                // Generar un nuevo token
+                String newToken = jwtUtils.generateJwtToken(userLoged.getCorreo());
+                UsuarioLoginReturnDTO userReturn = new UsuarioLoginReturnDTO(userLoged.getCorreo(), newToken, userLoged.getId_usuario());
+                return new ResponseEntity<>(userReturn, HttpStatus.OK);
+            }
         } else {
-            return new ResponseEntity<>("usuario invalido", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Usuario inválido", HttpStatus.NOT_FOUND);
         }
     }
 

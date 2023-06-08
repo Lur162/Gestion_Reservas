@@ -68,6 +68,10 @@ public class ReservasService {
 
     public ReservaDTO createReserva(ReservaDTO reservaDto) {
         Reserva reserva = convertToEntity(reservaDto);
+        LocalDate nuevaFechaEntrada = reservaDto.getFecha_Entrada().plusDays(1);
+        LocalDate nuevaFechaSalida = reservaDto.getFecha_Salida().plusDays(1);
+            reserva.setFecha_Entrada(nuevaFechaEntrada);
+            reserva.setFecha_Salida(nuevaFechaSalida);
         if(isDisponible(reservaDto.getFecha_Entrada(),reservaDto.getFecha_Salida())==true){
             reserva = reservaDAO.save(reserva);
             return convertToDto(reserva);

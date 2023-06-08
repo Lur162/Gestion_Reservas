@@ -14,8 +14,8 @@ export class ReservaService {
 
  // private _user!: UsuarioLoged;
   constructor(private http:HttpClient) {
-   // this._user=JSON.parse(sessionStorage.getItem('user')||"{}")
-   
+   // this._user=JSON.parse(sessionStorage.getItem('id')||"{}")
+
   }
 
 
@@ -25,11 +25,11 @@ export class ReservaService {
   borrarReserva(id: Number, id_user: number):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${sessionStorage.getItem('token')}` // Ajusta el nombre de la sesión de almacenamiento si es necesario
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     });
     const options = { headers: headers };
     return this.http.delete<any>(`${base_url}/deleteById/${id}/${id_user}`)
-    
+
   }
 
 }

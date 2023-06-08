@@ -5,7 +5,7 @@
     <div class="containerSearchBar">
       <p-calendar [(ngModel)]="reserva.date" selectionMode="range" [readonlyInput]="true" (onSelect)="onDateSelect($event)" [minDate]="minDate"></p-calendar>
       <p-dropdown [(ngModel)]="reserva.numero_personas" [options]="options" optionLabel="value"></p-dropdown>
-      <p-inputNumber [ngModel]="reserva.total" mode="currency" currency="EUR"></p-inputNumber>
+      <p-inputNumber style="    height: 48px;" [ngModel]="reserva.total" mode="currency" currency="EUR" [readonly]="true" ></p-inputNumber>
       <button pButton pRipple label="Enviar" class="send-button" (click)="reservar()"></button>
     </div>
     <div class="custom-card">

@@ -5,8 +5,14 @@
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
+
+}
+.card  {
+  margin-top: -40px;
+
 }
 .cardContainer {
+  margin-top: -40px;
   -webkit-box-shadow: -4px 7px 5px 1px rgba(0, 0, 0, 0.41);
   -moz-box-shadow: -4px 7px 5px 1px rgba(0, 0, 0, 0.41);
   box-shadow: -4px 7px 5px 1px rgba(0, 0, 0, 0.41);

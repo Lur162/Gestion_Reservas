@@ -10,20 +10,32 @@ import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
+import java.time.Clock;
 
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ReservaController {
+
+
     @Autowired
     private ReservasService reservasService;
     @Autowired
     private JavaMailSender mailSender;
+
+    @GetMapping("/timezone")
+    public String getTimeZone() {
+        ZoneId zoneId = ZoneId.systemDefault();
+        return "Zona horaria actual: " + zoneId;
+    }
 
     @DeleteMapping("api/reserva/deleteById/{id}/{id_user}")
 
@@ -96,6 +108,8 @@ public class ReservaController {
                 "</li></ul></body></html>";
         helper.setText(content, true);
         mailSender.send(message);
+
+
 
 
         return ResponseEntity.ok(reserva);

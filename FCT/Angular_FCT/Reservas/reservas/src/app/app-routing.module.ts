@@ -8,7 +8,7 @@ import { AuthRouterModule } from './auth/auth.routing';
 const routes: Routes = [
   {path:"",  pathMatch:"full",redirectTo:'/main'},
   {path:"**", component:Page404Component  },
-  
+
 ];
 
 @NgModule({

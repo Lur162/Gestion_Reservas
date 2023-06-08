@@ -13,7 +13,7 @@ import { Renderer2 } from '@angular/core';
 })
 export class ComentariosComponent {
 
- 
+
   private _comentarioo: Comentarios = new Comentarios(1);
   comentarios: Comentarios[] = [];
   @ViewChild('commentList') commentList!: ElementRef;
@@ -24,7 +24,9 @@ export class ComentariosComponent {
   ngOnInit() {
     this.obtenerComentariosAnteriores();
   }
-
+  getCurrentDate(): Date {
+    return new Date();
+  }
   obtenerComentariosAnteriores() {
     this.comentarioService.obtenerComentarios().subscribe(
       (comentarios) => {
@@ -46,11 +48,11 @@ export class ComentariosComponent {
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Comentario guardado con éxito' });
         const commentListElement = this.renderer.selectRootElement('#commentList');
         commentListElement.scrollTop = commentListElement.scrollHeight;
-  
+
 
          this._comentarioo.fecha_publicacion=new Date()
          this._comentarioo.texto=new String();
-          
+
       },
       (error) => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No ha sido posible guardar el comentario' });
@@ -60,7 +62,7 @@ export class ComentariosComponent {
   }
 
 
-    
+
     /**
      * Getter comentario
      * @return {Comentarios}
