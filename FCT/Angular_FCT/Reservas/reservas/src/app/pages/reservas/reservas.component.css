@@ -37,8 +37,8 @@
 }
 
 .p-button {
-  margin: 10px; /* Ajustar el margen a 10px */
-  width: 150px !important; 
+  margin: 10px;
+  width: 150px !important;
   display: inline-flex;
   cursor: pointer;
   -webkit-user-select: none;
@@ -48,7 +48,7 @@
   text-align: center;
   overflow: hidden;
   position: relative;
-  margin-top: 10px; /* Ajustar el margen superior a 10px */
+  margin-top: 10px;
 }
 
 .total-value {
@@ -64,10 +64,10 @@
 
 .p-inputnumber {
   flex: 1 1 auto;
-  margin-left: 10px; /* Ajustar el margen izquierdo a 10px */
+  margin-left: 10px;
   padding-left: 10px;
-  font-size: 14px; /* Ajustar el tamaño de fuente a 14px */
-  width: 120px; /* Ajustar el ancho a 120px */
+  font-size: 14px;
+  width: 120px;
 }
 
 .input-button-container {

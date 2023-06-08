@@ -39,29 +39,15 @@ public class ReservaController {
 
     @DeleteMapping("api/reserva/deleteById/{id}/{id_user}")
 
-    public ResponseEntity<?> eliminarReserva(@PathVariable Integer id, @PathVariable Integer id_user){
-        Long ides=Long.parseLong(String.valueOf(id));
-        Long id_users=Long.parseLong(String.valueOf(id_user));
-       if(reservasService.deleteReserva(id_users)==true){
+    public ResponseEntity<?> eliminarReserva(@PathVariable Long id, @PathVariable Long id_user){
+
+       if(reservasService.deleteReservaID(id,id_user)==true){
 
            return ResponseEntity.ok().body("{\"success\": true}");
        }
            return ResponseEntity.badRequest().body("{\"success\": false}");
     }
-  /*
-    @DeleteMapping("api/reserva/deleteById")
 
-    public ResponseEntity<?> eliminarReserva(@RequestBody ReservaDTO reservaDTO){
-        Reserva reserva=reservasService.convertToEntity(reservaDTO);
-
-        Long id=reserva.getId_reserva();
-        if(reservasService.deleteReserva(id)){
-            return ResponseEntity.ok(reserva);
-        }else {
-            return (ResponseEntity<?>) ResponseEntity.notFound();
-        }
-    }
-*/
     @GetMapping("api/reserva/{usuario}")
     public ResponseEntity<List<ReservaDTO>> getReserva(@RequestBody Usuario usuario){
 

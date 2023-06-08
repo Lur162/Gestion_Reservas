@@ -43,7 +43,7 @@ public class ReservasService {
         List<Reserva> reservaList= (List<Reserva>) reservaDAO.findAll();
 
         for (Reserva reserva: reservaList
-             ) {
+        ) {
             if(reserva.getUsuario().getId_usuario()==id_user){
                 return reserva;
             }
@@ -51,16 +51,15 @@ public class ReservasService {
         return null;
 
     }
-
-    public boolean deleteReserva(Long id_user) {
-        Reserva reserva=isReservaByUser(id_user);
+    public boolean deleteReservaID(Long id_reserva, long id_user) {
+        Reserva reserva=isReservaByUser(id_reserva);
         boolean isDelete=false;
         List<Reserva> reservaList= (List<Reserva>) reservaDAO.findAll();
         for (Reserva reservaa:reservaList
         ) {
-            if(reservaa==reserva){
+            if(reservaa.getId_reserva()==id_reserva && reservaa.getUsuario().getId_usuario()==id_user ){
                 isDelete=true;
-                reservaDAO.deleteById(reservaa.getId_reserva());
+                reservaDAO.deleteById(id_reserva);
             }
         }
         return isDelete;

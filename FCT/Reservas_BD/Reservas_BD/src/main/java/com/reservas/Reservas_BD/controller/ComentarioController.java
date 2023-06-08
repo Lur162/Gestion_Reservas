@@ -5,6 +5,7 @@ import com.reservas.Reservas_BD.DTO.ComentarioDTO;
 import com.reservas.Reservas_BD.beans.Comentario;
 import com.reservas.Reservas_BD.beans.Usuario;
 import com.reservas.Reservas_BD.service.ComentarioService;
+import com.reservas.Reservas_BD.service.ReservasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class ComentarioController {
 
 
 
+
     @GetMapping ("api/comentarioAll")
     public ResponseEntity<List<ComentarioDTO>> guardarComentario(){
         List<ComentarioDTO> comentarioDTOList=comentarioService.getAllComentarios();
@@ -36,6 +38,7 @@ public class ComentarioController {
 
         if(comentarioService.isNullComent(comentario1, comentario1.getUsuario())==true){
             comentarioService.saveComentarioo(comentario1);
+
             return  ResponseEntity.ok(comentario1);
         }
         return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ya tiene un comentario de la estancia");
