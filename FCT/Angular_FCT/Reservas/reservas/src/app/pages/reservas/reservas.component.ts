@@ -13,15 +13,15 @@ import { Renderer2 } from '@angular/core';
   providers: [MessageService]
 })
 export class ReservasComponent {
-  @ViewChild('idReservaInput') idReservaInput!: ElementRef;
+
   private _reserva: Reserva;
   minDate:Date;
   options:{key:number,value:string}[]=[]
   texto: string = 'Código de tu reserva';
   constructor(private AuthService:AuthService, private reservaService:ReservaService,private messageService:MessageService){
     console.log(this.AuthService.user.id)
-    
-    
+
+
    //this.AuthService.user
     this._reserva= new Reserva(this.AuthService.user.id);
     this.minDate=new Date();
@@ -69,7 +69,7 @@ this.reservaService.generarReserva(this._reserva).subscribe(
 )
   }
   //HAY QUE LLAMAR AL BOTON DE ELIMINAR, BORRAR RESERVA
- 
+
   borrarReserva(id:number){
     //TENGO QUE PASAR EL JWT PORQUE SI NO PUEDE BORRAR TODAS LAS RESERVAS INDENDIENTEMENTE SI ES SUYA O NO
     const idUsuario = this.AuthService.user.id;
@@ -78,15 +78,15 @@ this.reservaService.generarReserva(this._reserva).subscribe(
         if (response && response.success) {
           console.log(response);
           console.log('Reserva eliminada');
-          
+
           this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Reserva borrada correctamente' });
-          this.idReservaInput.nativeElement.value = null;
+
         } else {
           console.log(response);
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo eliminar la reserva' });
-          this.idReservaInput.nativeElement.value = null;
+
         }
-        
+
       },
       (error) => {
         console.log(error);
@@ -102,5 +102,5 @@ this.reservaService.generarReserva(this._reserva).subscribe(
 	public get reserva(): Reserva {
 		return this._reserva;
 	}
- 
+
 }

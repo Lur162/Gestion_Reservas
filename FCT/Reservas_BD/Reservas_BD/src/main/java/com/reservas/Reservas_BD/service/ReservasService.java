@@ -27,21 +27,18 @@ public class ReservasService {
         return reservas.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
-    public ReservaDTO getReservaById(Long id) {
-        Reserva reserva = reservaDAO.findById(id).orElse(null);
-        return (reserva != null) ? convertToDto(reserva) : null;
-    }
+
     public List<Reserva> getReservaPorUsuario(Usuario usuario){
         List<Reserva> reservaList= reservaDAO.findByUsuario(usuario);
         return reservaList;
     }
 
-    //TENGO QUE CONTROLAR QUE OTRO USUARIO NO BORRE LA RESERVA DE LOS DEMAS
 
 
     public Reserva isReservaByUser( long id_user){
         List<Reserva> reservaList= (List<Reserva>) reservaDAO.findAll();
 
+        //HAY QUE CONTROLAR QUE OTRO USUARIO NO BORRE LA RESERVA DE LOS DEMAS
         for (Reserva reserva: reservaList
         ) {
             if(reserva.getUsuario().getId_usuario()==id_user){
@@ -102,12 +99,7 @@ public class ReservasService {
         }
         return true;
     }
-    /*
-    public boolean isFechaDisponible(LocalDate fechaInicio, LocalDate fechaFin) {
-        List<Reserva> reservas = reservaDAO.findByFecha_EntradaBetweenOrFecha_SalidaBetween(fechaInicio, fechaFin, fechaInicio, fechaFin);
-        return reservas.isEmpty();
-    }
-*/
+
     public ReservaDTO updateReserva(Long id, ReservaDTO reservaDto) {
         Reserva reserva = convertToEntity(reservaDto);
         reserva.setId_reserva(id);
@@ -124,7 +116,6 @@ public class ReservasService {
     public Reserva convertToEntity(ReservaDTO reservaDto) {
         Usuario usuario=usuarioDAO.findById(reservaDto.getUsuario_id()).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));;
 
-        //  Comentario comentario = new Comentario(reservaDto.getComentario_id());
         return new Reserva(null, usuario, reservaDto.getFecha_Entrada(), reservaDto.getFecha_Salida(),reservaDto.getImporteTotal(),reservaDto.getNumero_personas());
     }
     public Usuario findUserByReserva(ReservaDTO reservaDTO){

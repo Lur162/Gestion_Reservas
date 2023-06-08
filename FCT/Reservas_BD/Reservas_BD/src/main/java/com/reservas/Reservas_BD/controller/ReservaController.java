@@ -85,6 +85,7 @@ public class ReservaController {
         message.setFrom(new InternetAddress("casarurallosmaragatos@gmail.com"));
         helper.setTo(usuario.getCorreo());
         helper.setSubject("Confirmación de reserva");
+        //CUERPO DEL MENSAJE
         String content ="<html><body><h1>Confirmación de reserva</h1><p>Datos de la reserva:</p><ul><li>Nombre: " + usuario.getNombre() +
                 "</li><li>Fecha Entrada: " + reserva1.getFecha_Entrada()  +
                 "</li><li>Fecha Salida: " + reserva1.getFecha_Salida()+

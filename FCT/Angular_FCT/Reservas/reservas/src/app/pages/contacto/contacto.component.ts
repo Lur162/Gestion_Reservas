@@ -11,7 +11,7 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class ContactoComponent {
-  //implements OnInit
+
   private _isDirty: boolean = false;
   contactoFormulario: FormGroup;
   pulsarBtnEnviar: boolean = false;
@@ -20,7 +20,7 @@ export class ContactoComponent {
     private cf: FormBuilder,
     private contactService: ContactoService,
     private messageService: MessageService
-    
+
   ) {
     this.contactoFormulario = this.cf.group({});
   }
@@ -33,7 +33,7 @@ export class ContactoComponent {
       mensaje: [
         '',
        [ Validators.required,Validators.minLength(5),Validators.maxLength(100)]
-      
+
       ],
     });
   }
@@ -64,6 +64,6 @@ export class ContactoComponent {
        // this.contactoFormulario = { nombre: '', correo: '',   asunto: '', mensaje: '' };
       }
     );
-          
+
   }
 }

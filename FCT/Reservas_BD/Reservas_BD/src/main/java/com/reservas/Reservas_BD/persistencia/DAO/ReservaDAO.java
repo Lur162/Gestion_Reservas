@@ -15,8 +15,7 @@ public interface ReservaDAO extends CrudRepository<Reserva, Long> {
     List<Reserva> findByFechas(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin);
 */
 
-    // List<Reserva> findBetweenfecha_EntradaANDfecha_Salida(LocalDate fecha_entrada, LocalDate fecha_salida);
     List<Reserva> findByUsuario(Usuario usuario);
-   // List<Reserva> findByFecha_EntradaBetweenOrFecha_SalidaBetween(LocalDate fechaEntrada1, LocalDate fechaEntrada2, LocalDate fechaSalida1, LocalDate fechaSalida2);
+
 
 }

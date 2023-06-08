@@ -23,18 +23,3 @@
   background-color: rgb(107, 194, 206);
   border: 1px solid #6cbed3;
 }
-/*
-.headerContainer{
-  display: flex;
-  justify-content: center;
-  height: 5%;
-
-}
-
-<div class="headerContainer">
-  <div>
-    <img class="imgLogo" src="/assets/imagenes/logo.jpg" alt="reservas" />
-  </div>
- 
-</div>
-*/

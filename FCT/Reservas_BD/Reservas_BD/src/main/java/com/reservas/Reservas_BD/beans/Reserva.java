@@ -10,7 +10,7 @@ public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_reserva;
-    //ID_USUARIO
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
@@ -25,7 +25,7 @@ public class Reserva {
 
     private double importeTotal;
     private int numero_personas;
-    //private final double precioXNoche=50;
+
 
 
     //PARA LA BD

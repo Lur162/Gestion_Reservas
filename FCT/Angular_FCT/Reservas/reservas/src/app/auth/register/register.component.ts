@@ -15,14 +15,14 @@ export class RegisterComponent {
   //dirty
   private _isDirty: boolean = false;
   formRegister: FormGroup;
- 
+
 
   constructor(
     private cf: FormBuilder,
     private authService: AuthService,
     private router:Router,
     private messageService: MessageService
-    
+
   ) {
     this.formRegister = this.cf.group({});
   }
@@ -53,13 +53,13 @@ export class RegisterComponent {
     this.authService.register(this.formRegister.value).subscribe(
       (response) => {
         console.log(response)
-        //sessionStorage.setItem('token','65a4sdgf864adfg168a')
+
         this.router.navigateByUrl('/login')
        },
       (error) => {
-      
+
        this.messageService.add({  severity: 'error', summary: 'Error', detail: 'Error al registrar usuario' });
-     
+
       }
     );
   }

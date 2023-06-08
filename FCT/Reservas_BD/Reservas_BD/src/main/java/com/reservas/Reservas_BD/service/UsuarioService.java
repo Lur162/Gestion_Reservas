@@ -48,15 +48,7 @@ public class UsuarioService {
         return null;
     }
 
-    //LOGIN
 
-    public boolean UserValido(Usuario usuario) {
-        Usuario usuario1 = usuarioDAO.findByCorreo(usuario.getCorreo());
-        if (usuario1 != null && usuario1.getContrasenia().equals(usuario.getContrasenia())) {
-            return true;
-        }
-        return false;
-    }
 
 
     public boolean isSave(Usuario usuario){

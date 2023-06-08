@@ -16,7 +16,7 @@ export class ComentariosComponent {
 
   private _comentarioo: Comentarios = new Comentarios(1);
   comentarios: Comentarios[] = [];
-  @ViewChild('commentList') commentList!: ElementRef;
+
   constructor(private AuthService: AuthService, private comentarioService: ComentarioService,private messageService:MessageService,private renderer: Renderer2  ){
     this._comentarioo=new Comentarios(this.AuthService.user.id);
 
@@ -46,8 +46,7 @@ export class ComentariosComponent {
          // Guardar el comentario en la lista
         this.comentarios.push(this.comentario);
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Comentario guardado con éxito' });
-        const commentListElement = this.renderer.selectRootElement('#commentList');
-        commentListElement.scrollTop = commentListElement.scrollHeight;
+
 
 
          this._comentarioo.fecha_publicacion=new Date()

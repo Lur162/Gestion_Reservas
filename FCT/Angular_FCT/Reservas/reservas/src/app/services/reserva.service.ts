@@ -12,9 +12,9 @@ const base_url = environment.base_url + '/reserva';
 })
 export class ReservaService {
 
- // private _user!: UsuarioLoged;
+
   constructor(private http:HttpClient) {
-   // this._user=JSON.parse(sessionStorage.getItem('id')||"{}")
+
 
   }
 
@@ -23,11 +23,6 @@ export class ReservaService {
     return this.http.post<any>(`${base_url}/reservas`, reserva)
   }
   borrarReserva(id: Number, id_user: number):Observable<any>{
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-    });
-    const options = { headers: headers };
     return this.http.delete<any>(`${base_url}/deleteById/${id}/${id_user}`)
 
   }
